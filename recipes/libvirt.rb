@@ -92,7 +92,7 @@ end
 
 # is cinder using rbd for volumes? If so, we can configure the libvirt secret
 # so that nova can boot from those volumes
-cinder_opts = get_settings_by_role('cinder-setup', 'cinder')
+cinder_opts = get_settings_by_role('cinder-volume', 'cinder')
 
 unless cinder_opts.nil?
   if cinder_opts['storage']['provider'] == 'rbd'
