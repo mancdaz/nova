@@ -97,10 +97,15 @@ cinder_opts = get_settings_by_role('cinder-volume', 'cinder')
 unless cinder_opts.nil?
   if cinder_opts['storage']['provider'] == 'rbd'
 
+    if node['ceph']['install_method'] == 'chef'
+      include_recipe 'ceph::repo'
+      include_recipe 'ceph'
+      include_recipe 'ceph::conf'
+    end
+
     rbd_user = cinder_opts['storage']['rbd']['rbd_user']
     rbd_secret_uuid = cinder_opts['storage']['rbd']['rbd_secret_uuid']
     rbd_user_key = cinder_opts['storage']['rbd']['rbd_user_key']
-#    rbd_user_key = node['cinder']['storage']['rbd']['rbd_user_key']
 
     template "/tmp/secret.xml" do
       source "secret.xml.erb"
