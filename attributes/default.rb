@@ -222,7 +222,7 @@ when "ubuntu"
     "nova_vncproxy_consoleauth_service" => "nova-consoleauth",
     "nova_vncproxy_consoleauth_process_name" => "nova-consoleauth",
     # README(shep): python-libvirt does not get automatically upgraded
-    "libvirt_packages" => ["libvirt-bin", "python-libvirt", "pm-utils"],
+    "libvirt_packages" => ["libvirt-bin", "python-libvirt", "pm-utils", "systool"],
     "libvirt_service" => "libvirt-bin",
     "nova_cert_packages" => ["nova-cert"],
     "nova_cert_service" => "nova-cert",
